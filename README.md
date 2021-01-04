@@ -25,20 +25,20 @@ The facemaskdetector is for social good, there is no room for social injustice, 
 know, I will retrain the model based on the new data.  
 
 ## I am standing on others' shoulders:
-  # a good blog post for face mask detector:(https://www.pyimagesearch.com/2020/05/04/covid-19-face-mask-detector-with-opencv-keras-tensorflow-and-deep-learning/) 
-  # https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/android
+  * a good blog post for face mask detector:(https://www.pyimagesearch.com/2020/05/04/covid-19-face-mask-detector-with-opencv-keras-tensorflow-and-deep-learning/) 
+  * https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/android
     (if you follow: https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/ios, this facemask detector can be easily ported to an iphone IOS app.)
-  # https://github.com/estebanuri/facemaskdetector
-  # https://medium.com/@estebanuri/real-time-face-mask-recognition-in-android-with-tensorflow-lite-215df6327265
-  # MobileNetV2 (I also tried MobileNetV3Small and MobileNetV3Large, MobileNetV2 is better. could be some hyperparameter issues.)
+  * https://github.com/estebanuri/facemaskdetector
+  * https://medium.com/@estebanuri/real-time-face-mask-recognition-in-android-with-tensorflow-lite-215df6327265
+  * MobileNetV2 (I also tried MobileNetV3Small and MobileNetV3Large, MobileNetV2 is better. could be some hyperparameter issues.)
   The model in this facemask detector was converted from Keras to TensorFlow Lite using the **TocoConverter** python class to migrate from the Keras '*.h5'* format 
   to the TensorFlow Lite *'.tflite'* format.
 
 
 ## DataSets
 I did review the data, and clean the dataset, add some more images.
-  # https://github.com/prajnasb/observations
-  # https://github.com/estebanuri/facemask_data
-  # https://github.com/AIZOOTech/FaceMaskDetection
-  # https://www.kaggle.com/andrewmvd/face-mask-detection
+  * https://github.com/prajnasb/observations
+  * https://github.com/estebanuri/facemask_data
+  * https://github.com/AIZOOTech/FaceMaskDetection
+  * https://www.kaggle.com/andrewmvd/face-mask-detection
 
