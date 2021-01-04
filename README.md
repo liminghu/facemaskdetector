@@ -24,6 +24,10 @@ You can download and install the Android App at:[Android/apk](https://github.com
 The facemaskdetector app. is for social good, there is no room for social injustice, but the facemaskdetector model is based on the training data, if you notice any issue, pls let me 
 know, I will retrain the model based on the new data.  
 
+### What's Next?
+  * Make it work properly for landscape mode.
+  * widely test it on other android phones.
+  
 ## I am standing on others' shoulders:
   * a good blog post for face mask detector:(https://www.pyimagesearch.com/2020/05/04/covid-19-face-mask-detector-with-opencv-keras-tensorflow-and-deep-learning/) 
   * https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/android
