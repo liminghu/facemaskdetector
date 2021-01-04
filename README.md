@@ -16,8 +16,8 @@ I have tried to donate masks, we did a lot of efforts to buy masks oversea, and 
  
 ### Environment
   * Android Studio/Java
-  * Google Pixel XL (an old goodle phone.)
-  (Place the Google Pixel XL phone in Portraint position.)
+  * Google Pixel XL (an old Google phone.)
+  (Place the Google Pixel XL phone in Portrait position.)
 
 You can download and install the Android App at:[Android/apk](https://github.com/liminghu/facemaskdetector/blob/main/android/apk/facemaskdetector.apk) folder.
 
