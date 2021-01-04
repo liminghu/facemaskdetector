@@ -27,7 +27,7 @@ know, I will retrain the model based on the new data.
 ### How good/bad is the face mask detector's performance?
 <img src="readme_img/facemaskdetector_performance.png" width="250">
 
-According to the validation data, the face mask detector can achieve 95% accuracy on tell non mask face from masked face.
+According to the validation data, the face mask detector can achieve 95% accuracy on telling non mask face from masked face.
 Do we need to achieve perfect accuracy? No. Did you notice the speed radar and the warning board by the road? it does not need to be perfect to let people slow down.
  
  
