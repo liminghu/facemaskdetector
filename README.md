@@ -1,7 +1,7 @@
 
 # A Real World Face Mask Detection/Tracking with Voice Warning in Android for Social Good 
 
-<img src="readme_img/sample_result1.png" width="250"> <img src="readme_img/sample_result2.png" width="250">
+<img src="readme_img/sample_result1.png" width="250">      <img src="readme_img/sample_result2.png" width="250">
 
 This face mask detector app with a cheap smart phone on a stand can be easily deployed at the entrance of a corner store, and the entrance of an office building,
 by the door of the conference room to friendly remind people to wear masks.
@@ -24,6 +24,11 @@ You can download and install the Android App at:[Android/apk](https://github.com
 The facemaskdetector app. is for social good, there is no room for social injustice, but the facemaskdetector model is based on the training data, if you notice any issue, pls let me 
 know, I will retrain the model based on the new data.  
 
+### How good/bad is the face mask detector's performance?
+According to the validation data, the face mask detector can achieve 95% accuracy on tell non mask face from masked face.
+Do we need to achieve perfect accuracy? No. Did you notice the speed radar and the warning board by the road? it does not need to be perfect to let people slow down.
+<img src="readme_img/facemaskdetector_performance.png" width="250"> 
+ 
 ### What's Next?
   * Make it work properly for landscape mode.
   * widely test it on other android phones.
