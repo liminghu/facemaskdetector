@@ -19,7 +19,7 @@ I have tried to donate masks, we did a lot of efforts to buy masks oversea, and 
   * Google Pixel XL (an old goodle phone.)
   (Place the Google Pixel XL phone in Portraint position.)
 
-You can download and install the Android App at: ![Android/apk](https://github.com/liminghu/facemaskdetector/blob/main/android/apk/facemaskdetector.apk) folder.
+You can download and install the Android App at:[Android/apk](https://github.com/liminghu/facemaskdetector/blob/main/android/apk/facemaskdetector.apk) folder.
 
 The facemaskdetector app. is for social good, there is no room for social injustice, but the facemaskdetector model is based on the training data, if you notice any issue, pls let me 
 know, I will retrain the model based on the new data.  
