@@ -1,7 +1,7 @@
 
 # A Real world face mask detection/tracking with Voice Warning in Android for social good 
 
-![Sample result 1](readme_img/sample_result1.png)<!-- .element height="25%" width="25%" --> ![sample result 2](readme_img/sample_result2.png) <!-- .element height="25%" width="25%" -->
+![Sample result 1](readme_img/sample_result1.png) <!-- .element height="10%" width="10%" -->  ![sample result 2](readme_img/sample_result2.png) <!-- .element height="10%" width="10%" -->
 
 This app with a cheap smart phone on a stand can be easily deployed at the entrance of a corner store, and the entrance of an office building,
 by the door of the conference room to friendly remind people to wear masks.
