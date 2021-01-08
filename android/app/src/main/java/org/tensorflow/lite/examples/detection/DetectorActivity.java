@@ -118,7 +118,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-
     // Real-time contour detection of multiple faces
     FaceDetectorOptions options =
             new FaceDetectorOptions.Builder()
@@ -126,7 +125,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                     .setContourMode(FaceDetectorOptions.LANDMARK_MODE_NONE)
                     .setClassificationMode(FaceDetectorOptions.CLASSIFICATION_MODE_NONE)
                     .build();
-
 
     FaceDetector detector = FaceDetection.getClient(options);
 
@@ -165,6 +163,19 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
       finish();
     }
 
+    //https://medium.com/@estebanuri/real-time-face-mask-recognition-in-android-with-tensorflow-lite-215df6327265
+    /*The original app defines two bitmaps:
+     (the rgbFrameBitmap where the preview frame is copied,
+     and the croppedBitmap which is originally used to feed the inference model).
+     We are going to define two additional bitmaps for processing,
+    the portraitBmp and the faceBmp.
+    The first is simply to rotate the input frame in portrait mode for devices that
+    have the sensor in landscape orientation.
+    And the faceBmp bitmap is used to draw every detected face, cropping
+    its detected location, and re-scaling to 224 x 224 px to be used as input of the MobileNetV2 model.
+    The frameToCropTransform converts coordinates from the original bitmap to the cropped bitmap space, and
+    cropToFrameTransform does it in the opposite direction.
+    */
     previewWidth = size.getWidth();
     previewHeight = size.getHeight();
 
@@ -173,7 +184,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     LOGGER.i("Camera orientation relative to screen canvas: %d", sensorOrientation);
 
     LOGGER.i("Initializing at size %dx%d", previewWidth, previewHeight);
-    rgbFrameBitmap = Bitmap.createBitmap(previewWidth, previewHeight, Config.ARGB_8888);
+    rgbFrameBitmap = Bitmap.createBitmap(previewWidth, previewHeight, Config.ARGB_8888); //800*600
 
     int targetW, targetH;
     if (sensorOrientation == 90 || sensorOrientation == 270) {
@@ -187,17 +198,19 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     int cropW = (int) (targetW / 2.0);
     int cropH = (int) (targetH / 2.0);
 
-    croppedBitmap = Bitmap.createBitmap(cropW, cropH, Config.ARGB_8888);
+    croppedBitmap = Bitmap.createBitmap(cropW, cropH, Config.ARGB_8888); //400*300
 
-    portraitBmp = Bitmap.createBitmap(targetW, targetH, Config.ARGB_8888);
-    faceBmp = Bitmap.createBitmap(TF_OD_API_INPUT_SIZE, TF_OD_API_INPUT_SIZE, Config.ARGB_8888);
+    portraitBmp = Bitmap.createBitmap(targetW, targetH, Config.ARGB_8888); //600*800
+    faceBmp = Bitmap.createBitmap(TF_OD_API_INPUT_SIZE, TF_OD_API_INPUT_SIZE, Config.ARGB_8888); //224*224
 
+    //converts coordinates from the original bitmap to the cropped bitmap space.
     frameToCropTransform =
             ImageUtils.getTransformationMatrix(
                     previewWidth, previewHeight,
                     cropW, cropH,
                     sensorOrientation, MAINTAIN_ASPECT);
 
+    //cropToFrameTransform does it in the opposite direction
     cropToFrameTransform = new Matrix();
     frameToCropTransform.invert(cropToFrameTransform);
 
@@ -218,7 +231,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     tracker.setFrameConfiguration(previewWidth, previewHeight, sensorOrientation);
   }
 
-
+//When the frames arrive the face detector is used. Face detection is done on the croppedBitmap,
+// since is smaller it can speed up the detection process.
   @Override
   protected void processImage() {
     ++timestamp;
@@ -350,6 +364,11 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
   }
 
+  //If faces are detected, the original frame is drawn in the portraitBmp bitmap to proceed with the second step detection.
+  // For each detected face, its bounding box is retrieved and mapped from the cropped space to the original space. This way
+  // we can get a better resolution image to feed the mask detector. Face cropping is done by translating
+  // the portrait bitmap to the face’s origin and scaling in such a way the face bounding box size matches the 224x224 pixels.
+  // Finally the mask detector is invoked.
   private void onFacesDetected(long currTimestamp, List<Face> faces) {
 
     cropCopyBitmap = Bitmap.createBitmap(croppedBitmap);

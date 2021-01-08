@@ -152,6 +152,9 @@ public class TFLiteObjectDetectionAPIModel implements Classifier {
     return d;
   }
 
+  //we can modify the recognizeImage method of TensorFlow Lite model class (we don’t need anymore
+  // the output locations, and now we only have one prediction for each execution), the label for
+  // the output is hard-coded but it could be easily retrieved from the label mappings text file:
   @Override
   public List<Recognition> recognizeImage(final Bitmap bitmap) {
     // Log this method so that it can be analyzed with systrace.
@@ -195,7 +198,7 @@ public class TFLiteObjectDetectionAPIModel implements Classifier {
     //outputMap.put(3, numDetections);
     Trace.endSection();
 
-// Here outputMap is changed to fit the Face Mask detector
+    // Here outputMap is changed to fit the Face Mask detector
     Map<Integer, Object> outputMap = new HashMap<>();
     output = new float[1][2];
     outputMap.put(0, output);
